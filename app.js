@@ -1,9 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
     const dino = document.querySelector('.dino');
+    let isJumping = false;
 
     function control(e) {
         if (e.keyCode === 32) {
-            jump();
+
+            if (!isJumping) {
+                isJumping = true;
+                jump();
+            }
+
 
         }
     }
@@ -28,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     if (position === 0) {
                         clearInterval(downTimerId)
+                        isJumping = false;
                         dino.style.bottom = '0px'
                     }
                 }, 20)
